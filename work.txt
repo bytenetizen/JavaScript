@@ -1,0 +1,47 @@
+<script>
+$(function() {
+	$('#callme').click(function(){
+	    $("#modal").show();
+	    $("#popup_close").show();
+	    $('body').append('<div id="fade"></div>');
+        $('#fade').css({'filter' : 'alpha(opacity=40)'}).fadeIn();
+  return false;
+	});
+	$('#fade, #popup_close').click(function() {
+	    $('#popup_close').fadeOut(function() {
+		    $("#modal").hide();
+			$('#fade').remove();
+		});
+		return false;
+	});
+	$('body').on('click', '#fade, #popup_close', function() {
+        $('#fade , #modal').fadeOut(function() {
+			$('#popup_video_block').empty();
+            $('#modal').fadeOut();
+			$('#popup_video_close').remove();
+            $('#fade').remove();
+        });
+    });
+});
+</script>
+<script>
+        $(document).ready(function(){
+            $('#btn_submit').click(function(){
+                var user_name    = $('#user_name').val();
+                var user_email   = $('#user_email').val();
+                $.ajax({
+                    url: "action.php", 
+                    type: "post",
+                    dataType: "json", 
+                    data: { 
+                        "user_name":    user_name,
+                        "user_email":   user_email
+                    },
+                   
+                    success: function(data){
+                        $('.messages').html(data.result);
+                    }
+                });
+            });
+        });
+</script>
