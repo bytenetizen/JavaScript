@@ -24,6 +24,8 @@ $(function() {
     });
 });
 </script>
+###############################################################
+Ответ .messages
 <script>
         $(document).ready(function(){
             $('#btn_submit').click(function(){
@@ -45,3 +47,34 @@ $(function() {
             });
         });
 </script>
+###################################################################
+Активная меню на странице
+ <ul id="nav"
+ 
+<script type="text/javascript">
+$(document).ready(function(){
+var url=document.location.href;
+ $.each($("#nav a"),function(){				//id меню
+  if(url.indexOf(this.href)>=0){
+    $(this).addClass('active'); 					//класс
+  };
+ });
+});
+</script>
+####################################################################
+<script type="text/javascript">
+    document.ondragstart = noselect; 
+    // запрет на перетаскивание 
+    document.onselectstart = noselect; 
+    // запрет на выделение элементов страницы 
+    document.oncontextmenu = noselect; 
+    // запрет на выведение контекстного меню 
+    function noselect() {return false;} 
+</script>
+
+-moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    -o-user-select: none;
+    user-select: none;
+
