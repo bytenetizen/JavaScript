@@ -6,6 +6,10 @@
         )};
         
         
+        $('th').filter(function(i, el) {
+  return $(el).text().indexOf('Ваши фото') > -1;
+}).text('');
+        
           // (function() {
     //     var text = 'Ваше фото', // Текст, который надо найти
     //         regexp = new RegExp(text, 'i');
