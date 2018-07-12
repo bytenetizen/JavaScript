@@ -1,5 +1,16 @@
 # JavaScript
-  $(document).ready(function() {
+ 
+ Вращение объектов в jQuery UI с помощью CSS transform
+ http://vremenno.net/js/jquery-ui-rotation-using-css-transform/
+ понадобится:
+jquery.js
+jquery.ui.core.js
+jquery.ui.widget.js
+jquery.ui.mouse.js
+jquery.ui.draggable.js
+ 
+ 
+ $(document).ready(function() {
         $('th').filter(function(i, el) {
             return el.text().indexOf('Ваше фото') > -1;
         }).text('');
