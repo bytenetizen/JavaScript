@@ -1,3 +1,23 @@
+
+        $(document).ready(function() {
+            $('.item').mouseover(function() {
+               /* debugger;*/
+                    var title = $(this).data("id");
+                    console.log(title);
+                $(this).append( $(title) );
+                $(title).show();
+				$("#"+title).fadeIn();
+            });
+                $(".item").mouseout
+                (function(){
+                    // Получаем ID блока, который нужно показать
+                    var title = $(this).data("id");
+                    // Скрываем блок
+                    $("#"+title).fadeOut();
+                });
+        });
+
+
 <script>
 $(function() {
 	$('#callme').click(function(){
