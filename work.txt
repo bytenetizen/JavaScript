@@ -17,7 +17,15 @@
                 });
         });
 
-
+/****************************************/
+Проверка на наличие файла
+$.get(url)
+    .done(function() { 
+        // exists code 
+    }).fail(function() { 
+        // not exists code
+    })
+/******************************************/
 <script>
 $(function() {
 	$('#callme').click(function(){
