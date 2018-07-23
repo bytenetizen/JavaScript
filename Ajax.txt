@@ -18,3 +18,68 @@ $.ajax({
     $("#results").append(html);
   }
 });
+#####################################################################
+<form id="form'.$row["id"].'">
+<input type="hidden" class="name" name="name" placeholder="Ваше имя" value="'.$name.'"><br>
+<input type="hidden" class="surname" name="surname" placeholder="Ваша Фамилия" value="'.$surname.'"><br>
+<textarea name="comment" class="comment" rows="2" cols="60" placeholder="Текст комментария"></textarea><br>
+<input type="submit" name="submit" class="btn" value="ОТПРАВИТЬ">
+<input type="hidden" name="formData" value="'.$row["id"].'">
+</form>		  
+
+ <script>
+
+        $(document).ready(function () {
+            $('form').submit(function () {
+                var formID = $(this).attr('id'); // Получение ID формы
+                var formNm = $('#' + formID);
+                console.log(formNm);
+                debugger;
+                $.ajax({
+                    type: 'POST',
+                    url: 'action_ajax_form.php', // Обработчик формы отправки
+                    data: formNm.serialize(),
+                    success: function (data) {
+                        // Вывод текста результата отправки в текущей форме
+                     $(formNm).html(data);
+                    }
+                });
+                return false;
+            });
+        });
+
+
+    </script>
+    
+    <?php
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    if (isset($_POST['name'])) {
+        $name = $_POST['name'];
+    }
+    if (isset($_POST['surname'])) {
+        $surname = $_POST['surname'];
+    }
+    if (isset($_POST['comment'])) {
+        $comment = $_POST['comment'];
+    }
+    if (isset($_POST['formData'])) {
+        $formData = $_POST['formData'];
+    }
+    //$to = "info@site.ru"; /*Укажите ваш адрес электронной почты*/
+//    $headers = "Content-type: text/plain; charset = utf-8";
+//    $subject = "$formData";
+//    $message = "$formData\n\nИмя: $name \n\nТелефон: $surname \n\n$musicid";
+//    $send = mail ($to, $subject, $message, $headers);
+    if ($send != 'true')
+    {
+        echo "<center>$formData\n\n <br> Имя: $name \n\n <br>Фамилия: $surname \n\n <br>Спасибо за отправку вашего сообщения! <br>$comment</center>";
+    }
+    else
+    {
+        echo "<center><b>Ошибка. Сообщение не отправлено!</b></center>";
+    }
+} else {
+    http_response_code(403);
+    echo "Попробуйте еще раз";
+}
+?>
