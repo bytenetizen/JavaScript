@@ -25,6 +25,21 @@ $.get(url)
     }).fail(function() { 
         // not exists code
     })
+    
+   <img src = "https://www.kissfm.ua/static/img/content/dj/0/11/901x90.jpg" onerror = "this.style.display = 'none'">
+    <script>
+var url = 'https://www.kissfm.ua/static/img/stock/2/16/mp3/{/literal}{$i.absnum}{literal}-771.mp3';
+                                $.get(url)
+                                    .done(function() {
+                                        console.log('yes');
+                                        // exists code
+                                    }).fail(function() {
+                                    document.getElementById('nofile{/literal}{$i.absnum}{literal}' ).style.display = 'none';
+                                    console.log('no');
+                                })
+
+                            </script>
+    
 /******************************************/
 <script>
 $(function() {
