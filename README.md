@@ -8,7 +8,9 @@ jquery.ui.core.js
 jquery.ui.widget.js
 jquery.ui.mouse.js
 jquery.ui.draggable.js
- 
+
+
+ http://touchpunch.furf.com/
  
  $(document).ready(function() {
         $('th').filter(function(i, el) {
