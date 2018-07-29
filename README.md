@@ -1,4 +1,6 @@
 # JavaScript
+ alert(window.location.href);
+ 
  
  Вращение объектов в jQuery UI с помощью CSS transform
  http://vremenno.net/js/jquery-ui-rotation-using-css-transform/
