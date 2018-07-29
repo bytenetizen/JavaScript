@@ -1,6 +1,10 @@
 # JavaScript
  alert(window.location.href);
  
+  var link = document.getElementById('Lnk');
+        link.setAttribute("onclick","popupWin = window.open(this.href,'contacts','location,width=490,height=368,top=0'); popupWin.focus(); return false");
+
+ 
  
  Вращение объектов в jQuery UI с помощью CSS transform
  http://vremenno.net/js/jquery-ui-rotation-using-css-transform/
