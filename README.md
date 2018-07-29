@@ -1,6 +1,8 @@
 # JavaScript
  alert(window.location.href);
  
+ 
+ <a href="https://shookes.com/upper/upper.php" target="_blank" onclick="this.href=\'fhdhdfhfd.html\'">Домашний фикус</a>
   var link = document.getElementById('Lnk');
         link.setAttribute("onclick","popupWin = window.open(this.href,'contacts','location,width=490,height=368,top=0'); popupWin.focus(); return false");
 
