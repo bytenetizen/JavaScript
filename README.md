@@ -6,6 +6,17 @@
   var link = document.getElementById('Lnk');
         link.setAttribute("onclick","popupWin = window.open(this.href,'contacts','location,width=490,height=368,top=0'); popupWin.focus(); return false");
 
+
+
+        var goo = device.android();
+        if (goo == true){
+            console.log(goo + ' ok ipad');
+            $('.ios-url').attr('href', 'viber://chat?number=380670094964');
+		}else{
+            console.log(goo + ' no ipad');
+            $('.ios-url').attr('href', 'viber://chat?number=+380670094964');
+		}
+
  
  
  Вращение объектов в jQuery UI с помощью CSS transform
