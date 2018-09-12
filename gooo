@@ -1,0 +1,131 @@
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+
+
+<?
+// $phrase = file_get_contents('https://o.tavrmedia.ua/relaxcafe');
+ $phrase = file_get_contents('https://o.tavrmedia.ua/hit3songs');
+ 
+ //$phrase  = "You should eat % fruits, vegetables, and fiber every day.";
+$healthy = array("fruits", "vegetables", "fiber", "%", "'");
+$yummy   = array("pizza", "beer", "ice cream", "", " ");
+$newphrase = str_replace($healthy, $yummy, $phrase);
+//var_dump($newphrase);
+ 
+//$newphrase = json_decode($newphrase, true);
+
+
+
+$text  = "%You dfd should eat % fruits, vegetables, and fiber every day.%";
+$go = trim($text, ".");
+$gof =crypt("123456");
+//var_dump($gof);
+//var_dump($go);
+echo $newphrase;
+
+
+
+?>
+<div id="Summ"></div>
+<script>
+document.getElementById('Summ').innerHTML = 'ddfdf';
+
+</script>
+
+
+<div id="resultnamerrr"><img id="resultimg0" src=""></div>
+<div id="resultname0"></div>
+<div id="resultnamerr"><img id="resultimg1" src=""></div>
+<div id="resultname1"></div>
+<div id="resultnamerrrr"><img id="resultimg2" src=""></div>
+<div id="resultname2"></div>
+<div id="resultnamer"><img id="resultimg3" src=""></div>
+<div id="resultname3"></div>
+<script>
+$(document).ready(function(){
+  //Code here  
+
+
+    var request = '<? echo $newphrase; ?>';
+/*console.log(request);
+
+var arr = ["Яблоко", "Апельсин", "Груша"];
+
+arr.forEach(function(item, i, request) {
+  console.log( i + ": " + item + " (массив:" + request + ")" );
+});
+/*for (request in obj) {
+  
+}*/
+ 
+
+request = JSON.parse(request);
+request.forEach(function(item, i, request) {
+    //$.get('https://cors.io/?https://api.deezer.com/search/track?q='+ item['song'] +'',
+    //console.log(data);
+        //$('#resultimg').attr('src', data['data']['0']['album']['cover_medium']);
+                
+  console.log( item['time'] + ' ' + item['singer'] + ' '+ item['song']);
+  console.log( item['song']);
+  $.get('https://cors.io/?https://api.deezer.com/search/track?q=' + item['song'] + '',
+                function(data){
+                console.log(data);
+                console.log(i);
+               // $("#resultname"+ i +"").textContent = i;
+        document.getElementById("resultname"+ i +"").innerHTML = item['song'] + item['singer'];
+                    $("#resultimg"+ i +"").attr('src', data['data']['0']['album']['cover_medium']);
+                    }, "json");
+});
+
+console.log(request); // сработает!
+$.get('https://cors.io/?https://api.deezer.com/search/track?q=Wroldsen',
+                function(data){
+                     
+                console.log(data);
+                var eln = document.getElementById('resultname');
+               
+                
+                    $('#resultimg-qqq').attr('src', data['data']['0']['album']['cover_medium']);
+                    }, "json");
+
+
+
+ $('#get2_btn').click(function() {
+           // var singer = document.getElementById("input_form").value;
+            var song = document.getElementById("input_form_track").value;
+            console.log(song);
+            //console.log(singer);
+            $.get('https://cors.io/?https://api.deezer.com/search/track?q='+ song +'',
+                function(data){
+                console.log(data);
+                console.log(data['data']['0']['artist']['name']);
+                console.log(data['data']['0']['album']['cover_medium']);
+                console.log(data['data']['0']);
+
+
+
+                    var eln = document.getElementById("resultname" + i + "");
+                    eln.textContent = data['data']['0']['artist']['name'];
+                    var eln = document.getElementById('resultalb');
+                    eln.textContent = data['data']['0']['album']['title'];
+                   // var el = document.getElementById('resultimg');
+                    //var eli = document.getElementById('resultimg');
+                   //eli.textContent.src = 'адрес_новой';
+                    $('#resultimg').attr('src', data['data']['0']['album']['cover_medium']);
+                   // el.textContent = <img src="https://www.rusradio.ua/static/img/content/chervonaruta/4/54/90x90.jpg">;
+
+                    if (data.success) {
+
+
+                    } else {
+                       // $('#result').html(data.error.msg);
+                    }
+                }, "json");
+            return false;
+        })
+
+
+
+
+});
+
+</script>
