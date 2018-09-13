@@ -1,6 +1,4 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
-https://api.deezer.com/search/track?q=Hurts&title=Ready%To%Go
-https://api.deezer.com/search?q=artist:"aloe blacc" track:"i need a dollar"
 
 <?
 // $phrase = file_get_contents('https://o.tavrmedia.ua/relaxcafe');
@@ -26,12 +24,6 @@ echo $newphrase;
 
 
 ?>
-<div id="Summ"></div>
-<script>
-document.getElementById('Summ').innerHTML = 'ddfdf';
-
-</script>
-
 
 <div id="resultnamerrr"><img id="resultimg0" src=""></div>
 <div id="resultname0"></div>
@@ -43,22 +35,9 @@ document.getElementById('Summ').innerHTML = 'ddfdf';
 <div id="resultname3"></div>
 <script>
 $(document).ready(function(){
-  //Code here  
 
 
-    var request = '<? echo $newphrase; ?>';
-/*console.log(request);
-
-var arr = ["Яблоко", "Апельсин", "Груша"];
-
-arr.forEach(function(item, i, request) {
-  console.log( i + ": " + item + " (массив:" + request + ")" );
-});
-/*for (request in obj) {
-  
-}*/
- 
-
+var request = '<? echo $newphrase; ?>';
 request = JSON.parse(request);
 request.forEach(function(item, i, request) {
     //$.get('https://cors.io/?https://api.deezer.com/search/track?q='+ item['song'] +'',
@@ -67,26 +46,38 @@ request.forEach(function(item, i, request) {
                 
   console.log( item['time'] + ' ' + item['singer'] + ' '+ item['song']);
   console.log( item['song']);
-  $.get('https://cors.io/?https://api.deezer.com/search/track?q=' + item['song'] + '',
+  
+   var re = / /g;
+  var son = item['song'];
+   var sin = item['singer'];
+ var singer = sin.replace(re, "%");
+ var song = son.replace(re, "%");
+ var url = 'https://cors.io/?https://api.deezer.com/search?q=artist:"' + singer + '" track:"'+ song +'"'
+console.log(song);
+ console.log(singer);
+ console.log(url);
+  //console.log(singer);
+//$.get('https://cors.io/?https://api.deezer.com/search/track?q=' + item['song'] + '',
+$.get('https://cors.io/?https://api.deezer.com/search?q=artist:"' + singer + '" track:"'+ song +'"',
                 function(data){
                 console.log(data);
-                console.log(i);
+                if ( data['data'][0] != null){
+                    
+                document.getElementById("resultname"+ i +"").innerHTML ='<b>' +  item['song'] +"</b> " + item['singer'];
+                $("#resultimg"+ i +"").attr('src', data['data']['0']['album']['cover_medium']);    
+                    
+                }else{
+                    document.getElementById("resultname"+ i +"").innerHTML = '<b>' + item['song'] +"</b> " + item['singer'];
+                
+                    alert('Ненайдено \n' + item['singer'] + ' ' + item['song']);
+                }
                // $("#resultname"+ i +"").textContent = i;
-        document.getElementById("resultname"+ i +"").innerHTML = item['song'] + item['singer'];
-                    $("#resultimg"+ i +"").attr('src', data['data']['0']['album']['cover_medium']);
+
+
                     }, "json");
 });
 
 console.log(request); // сработает!
-$.get('https://cors.io/?https://api.deezer.com/search/track?q=Wroldsen',
-                function(data){
-                     
-                console.log(data);
-                var eln = document.getElementById('resultname');
-               
-                
-                    $('#resultimg-qqq').attr('src', data['data']['0']['album']['cover_medium']);
-                    }, "json");
 
 
 
