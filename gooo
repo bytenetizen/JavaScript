@@ -1,5 +1,6 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
 https://api.deezer.com/search/track?q=Hurts&title=Ready%To%Go
+https://api.deezer.com/search?q=artist:"aloe blacc" track:"i need a dollar"
 
 <?
 // $phrase = file_get_contents('https://o.tavrmedia.ua/relaxcafe');
