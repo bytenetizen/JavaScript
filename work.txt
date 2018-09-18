@@ -1,5 +1,36 @@
+<audio id="myaudio"  controls="" autoplay="" src="http://online-rusradio.tavrmedia.ua/RusRadio" title="prerole"></audio>
 
-        $(document).ready(function() {
+    $("#myaudio").attr("src", "/zvuk-chasov-ntv-chasy.mp3");//Рекламный ролик
+    
+document.getElementById("myaudio").preload = "auto";
+var count = 0,
+    time = 10000;
+
+function timeout() {
+    setTimeout(function () {
+        count += 1;
+        if (count == 1){
+        $("#myaudio").attr("src", "http://online-hitfm.tavrmedia.ua/HitFM"); //Канал
+        $("#myaudios").autoplay;
+        //document.getElementById("myaudio").preload = "auto";
+        }
+        
+        var vid = document.getElementById("myaudio"); 
+
+function playVid() { 
+    vid.play(); 
+} 
+        
+        console.log(count);
+        timeout();
+    }, time);
+};
+timeout();
+
+
+
+        //-----------------------------------
+	$(document).ready(function() {
             $('.item').mouseover(function() {
                /* debugger;*/
                     var title = $(this).data("id");
