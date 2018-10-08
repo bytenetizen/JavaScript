@@ -1,6 +1,7 @@
 # JavaScript
  alert(window.location.href);
  
+ https://habr.com/post/309430/
  
  <a href="https://shookes.com/upper/upper.php" target="_blank" onclick="this.href=\'fhdhdfhfd.html\'">Домашний фикус</a>
   var link = document.getElementById('Lnk');
