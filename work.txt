@@ -1,3 +1,10 @@
+   $('html').keydown(function(e){ //отлавливаем нажатие клавиш
+                console.log(e.keyCode);
+                if (e.keyCode == 67) { //если нажали Enter, то true
+                    document.execCommand('copy');
+                    console.log('dfdf');
+                }
+            });
    /****************************Копирование в буфер**************************************/
    $('#copy').on('click',function(){
                 $(".copy").show();
