@@ -1,3 +1,56 @@
+   /****************************Копирование в буфер**************************************/
+   $('#copy').on('click',function(){
+                $(".copy").show();
+                // var code = document.querySelector('.motivation');
+                // var codes = document.querySelector('.motivation').innerHTML;
+                // console.log(codes);// #text - блок из которого нужно скопировать
+                //
+                // const myData = codes + " \r\n \nБольше шуток на https://rusradio.ua";
+                // const modifyCopy = (e) => {
+                //     e.clipboardData.setData('text/plain',  myData  );
+                //     document.execCommand('copy');
+                //     e.preventDefault();
+                // };
+                //
+                // document.addEventListener('copy', modifyCopy);
+                //
+                //
+                //  var range = document.createRange();
+                // range.selectNode(code);
+                // window.getSelection().addRange(range);
+                //
+                // try {
+                //     var successful = document.execCommand('copy');
+                //     var msg = successful?'удачно':'неудачно';
+                //     // alert('Код скопирован '+msg);
+                // } catch(err) {
+                //     // alert('Код не скопирован автоматически :с'+'\n'+'Попробуйте вручную');
+                // }
+                var copyright = "<br><br>Больше шуток на https://rusradio.ua";
+                $('<b style="opacity: 0; position: absolute;">' + copyright + '</b>').appendTo('#cont');
+                  //нашли наш контейнер
+                    var ta = document.getElementById('cont');
+                    //производим его выделение
+                    var range = document.createRange();
+                //var selection = getSelection();
+                    range.selectNode(ta);
+                    window.getSelection().addRange(range);
+
+                    //пытаемся скопировать текст в буфер обмена
+                    try {
+                        document.execCommand('copy');
+                    } catch(err) {
+                        console.log('Can`t copy, boss');
+                    }
+
+
+
+                window.getSelection().removeAllRanges();
+                $(".copy").fadeOut(3000);
+
+            });
+/*---------------------------------------------------------------------------*/
+
 <audio id="myaudio"  controls="" autoplay="" src="http://online-rusradio.tavrmedia.ua/RusRadio" title="prerole"></audio>
 
     $("#myaudio").attr("src", "/zvuk-chasov-ntv-chasy.mp3");//Рекламный ролик
