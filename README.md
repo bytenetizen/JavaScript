@@ -1,6 +1,10 @@
 # JavaScript
  alert(window.location.href);
  
+ if(navigator.userAgent.match(/Android/i)){
+   //Код андроид
+}
+ 
  https://habr.com/post/309430/
  
  <a href="https://shookes.com/upper/upper.php" target="_blank" onclick="this.href=\'fhdhdfhfd.html\'">Домашний фикус</a>
