@@ -1,0 +1,15 @@
+<script type="text/javascript">
+    document.ondragstart = noselect;
+
+    document.onselectstart = noselect;
+
+    document.oncontextmenu = noselect;
+
+    function noselect() {return false;}
+</script>
+#######################################
+-moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    -o-user-select: none;
+    user-select: none;
