@@ -1,6 +1,12 @@
 # JavaScript
  alert(window.location.href);
- 
+ //*********************************************
+ <script>function init() {
+    $('a').addClass('ajax');
+}</script>
+<script src="/jquery.js" async onload="init()"></script>
+  //*********************************************
+
  if(navigator.userAgent.match(/Android/i)){
    //Код андроид
 }
