@@ -1,0 +1,41 @@
+<input id="user_last_name">lots of words here in this textarea</input>
+</br>
+<input id="another">lots of words here in this textarea</input>
+
+$(document).ready(function () {
+    //каждое слово с большой буквы
+    //все с большой буквы
+    //удалить некорректные символы в поле
+    $.fn.capitalize = function () {
+        $.each(this, function () {
+            var split = this.value.split(' ');
+            for (var i = 0, len = split.length; i < len; i++) {
+                split[i] = split[i].charAt(0).toUpperCase() + split[i].slice(1);
+            }
+            this.value = split.join(' ');
+        });
+        return this;
+    };
+    $('input#user_last_name').on('keyup', function () {
+        $(this).capitalize();
+    }).capitalize();
+
+    //все с большой буквы
+    $('input#another').keyup(function () {
+        this.value = this.value.toUpperCase();
+    });
+
+    //удалить символы в поле ВАРИАНТ УДАЛЕНИЯ ВСЯКОГО МУСОРА КРОМЕ УКАЗАННОГО REGEXP
+    $('input#user_last_name').change(function () {
+        var name_without_special_char = $('input#user_last_name').val().replace(/[^а-яА-Яёїa-zA-Z \-]+/g, "").trim();
+        $(this).val(name_without_special_char);
+    });
+
+});
+
+
+//удалить символы в поле ВАРИАНТ УДАЛЕНИЯ ТОЛЬКО ПРОБЕЛОВ
+$('input#another').change(function () {
+    var dname_without_space = $('input#another').val().replace(/ /g, "").trim();
+    $(this).val(dname_without_space);
+});
